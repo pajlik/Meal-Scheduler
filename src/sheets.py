@@ -51,24 +51,23 @@ def get_todays_meals() -> dict | None:
         print("No data found in sheet.")
         return None
 
-    today = datetime.date.today().strftime("%A")  # e.g. "Monday"
-    print(today, 'today')
+    tomorrow = (datetime.date.today() + datetime.timedelta(days=1)).strftime("%A")  # tomorrow
 
     for row in rows[1:]:  # skip header row
         if not row:
             continue
         date_cell = row[0].strip() if len(row) > 0 else ""
         print(date_cell, 'date_cell')
-        if date_cell.lower() == today.lower():
+        if date_cell.lower() == tomorrow.lower():
             return {
-                "date": today,
+                "date": tomorrow,
                 "breakfast": row[1].strip() if len(row) > 1 else "—",
                 "lunch":     row[2].strip() if len(row) > 2 else "—",
                 "dinner":    row[3].strip() if len(row) > 3 else "—",
                 "snacks":    row[4].strip() if len(row) > 4 else None,
             }
 
-    print(f"No entry found for today ({today}). Check sheet has a row with that day name.")
+    print(f"No entry found for today ({tomorrow}). Check sheet has a row with that day name.")
     return None
 
 

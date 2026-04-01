@@ -8,7 +8,7 @@ def build_message(meals: dict) -> str:
     """
     date = meals["date"]
     lines = [
-        f"🍽️ *आज का मेनू — {date}*\n",
+        f"🍽️ *कल का मेनू ({date})!*\n",
         f"🌅 *नाश्ता (Breakfast):*\n{meals['breakfast']}\n",
         f"☀️ *दोपहर का खाना (Lunch):*\n{meals['lunch']}\n",
         f"🌙 *रात का खाना (Dinner):*\n{meals['dinner']}",

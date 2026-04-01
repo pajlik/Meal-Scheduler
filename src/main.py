@@ -37,7 +37,7 @@ def send():
 def debug():
     import datetime
     rows = get_all_rows()
-    today = datetime.date.today().strftime("%A")
+    today = (datetime.date.today() + datetime.timedelta(days=1)).strftime("%A")
     return jsonify({"today": today, "rows": rows}), 200
 
 
